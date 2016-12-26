@@ -1,33 +1,33 @@
 #include <iostream>
+#include <math.h>
 
+int divisors(int n) {
+	int limit = (int)sqrt(n);
+	int divs = 0;
 
-int getTriangleNumber(int n) {
-	int ret = 0;
-
-	for (int x = 0; x <= n; x++) {
-		ret += x;
+	for (int i = 1; i < limit; i++) {
+		if (n % i == 0) divs += 2;
 	}
 
-	return ret;	
+	if (n % limit == 0) divs+=1;
+
+	return divs;
 }
 
 int main() {
 
+	int result = 0;
+	int desired = 500;
+	bool notFound = true;
 
-	for (int triangles = 12000; triangles < 13000; triangles++) {
-		long triangle = (long)getTriangleNumber(triangles);
+	for (int i = 1; notFound; i++) {
+		result+=i;
+		int factors = divisors(result);
 
-		int divisors = 0;
-		for (long x = 1; x < triangle; x++) {
-			if (triangle % x == 0) {
-				divisors++;
-			}
-		}
-
-		if (divisors > 500) {
-			std::cout << triangle << std::endl;
-		}
+		if (factors > desired) notFound = false;
 	}
+
+	std::cout << result << std::endl;
 
 	return 0;
 }

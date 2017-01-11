@@ -18,7 +18,6 @@ int main() {
 			primes++;
 			std::cout << curr << std::endl;
 		}
-
 		curr++;
 	}
 	return 0;
